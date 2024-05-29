@@ -1,13 +1,13 @@
 
 // Retorna un string con la eleccion aleatoria de la computadora
 function getComputerChoice() {
-    const randomizer = Math.random() *10;
+    const randomizer = Math.floor(Math.random() *10);
     let computerChoice;
     
-    if (randomizer <= 3) {
+    if (randomizer < 3) {
         computerChoice = 'Rock';
 
-    }else if (randomizer <= 6 && eleccion > 3) {
+    }else if (randomizer < 6 && randomizer > 3) {
         computerChoice = 'Papper';
 
     }else {
@@ -17,12 +17,28 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+// Muestra un mensaje en pantalla y retorna la eleccion del usuario
 function getHumanChoice() {
-    const election = prompt('Elige una opción:\n[1] - Piedra\n[2] - Papel\n[3] - Tijeras', undefined);
-    console.log(election);
+    let election = parseInt(prompt('Elige una opción:\n[1] - Piedra\n[2] - Papel\n[3] - Tijeras', undefined));
+
+    switch (election) {
+        case 1:
+            election = 'Rock';
+            break;
+
+        case 2:
+            election = 'Papper';
+            break;
+
+        case 3:
+            election = 'Scissors';
+            break;
+    }
+
     return election;
 }
 
+// Incrementa la puntuación
 function humanScore(points) {
     points ++;
     return points;
@@ -33,60 +49,91 @@ function computerScore(points) {
     return points;
 }
 
-function playRound() {
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-    let result = 0;
+// Establece una ronda del juego
+function playRound(humanChoice, computerChoice) {
+    // Variable que guarda el valor dependiendo la situacion [1] gana jugador, [2] gana CPU, [3] empate
+    let result;
 
+    // Compara las elecciones del usuario con las de la maquina
     switch (humanChoice) {
-        case 1:
+        case 'Rock':
             switch (computerChoice) {
                 case 'Rock':
-                    result = 3;
+                    result = 'Empate';
                     break;
-                case 'Paper':
-                    result = 2;
+                case 'Papper':
+                    result = 'Pierdes';
                     break;
                 case 'Scissors':
-                    result = 1;
+                    result = 'Ganas';
                     break;
             }
             break;
 
-        case 2:
+        case 'Papper':
             switch (computerChoice) {
                 case 'Rock':
-                    result = 1;
+                    result = 'Ganas';
                     break;
-                case 'Paper':
-                    result = 3;
+                case 'Papper':
+                    result = 'Empate';
                     break;
                 case 'Scissors':
-                    result = 2;
+                    result = 'Pierdes';
                     break;
             }
             break;
         
-        case 3:
+        case 'Scissors':
             switch (computerChoice) {
-                case 'Rock':
-                    result = 2;
+                case 'rock':
+                    result = 'Pierdes';
                     break;
-                case 'Paper':
-                    result = 1;
+                case 'Papper':
+                    result = 'Ganas';
                     break;
                 case 'Scissors':
-                    result = 3;
+                    result = 'Empate';
                     break;
             }
             break;
     }
+
+    return result;
 }
 
+// Itera en i ocaciones la ronda de juego
 function playGame () {
+
+    let result = '';
+    let humanPoints = 0;
+    let computerPoints = 0;
+
     for (let i = 0; i < 5; i++) {
-        playRound();
+        // Variables que guardan las elecciones del jugador y la cpu
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+
+        result = playRound(humanChoice,computerChoice);
+        
+        //Imprime en consola el resultado de la ronda y suma los puntos
+        switch (result) {
+            case 'Ganas':
+                console.log(`¡Ganaste! en la ronda: ${i + 1}`);
+                humanPoints = humanScore(humanPoints);
+                break;
+        
+            case 'Pierdes':
+                console.log(`Perdiste en la ronda: ${i + 1}`);
+                computerPoints = computerScore(computerPoints);
+                break;
+            
+            case 'Empate':
+                console.log(`Empate en la ronda: ${i + 1}`);
+        }
     }
+
+    alert(`Puntos del usuario: ${humanPoints}\nPuntos de la CPU: ${computerPoints}`)
 }
 
 playGame();
