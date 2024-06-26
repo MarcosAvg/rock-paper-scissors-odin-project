@@ -1,11 +1,76 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piedra, Papel, Tijeras</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
-    <script src="script.js"></script>
+  <section class="ui">
+    <div class="ui__round">
+      <h1 class="ui__round__text">Round 1</h1>
+    </div>
+
+    <div class="ui__timeline">
+      <time datetime="#" id="countdown"></time>
+    </div>
+
+    <div class="ui__fightText">
+      <span id="fightText">figth</span>
+    </div>
+
+    <div class="ui__deathline">
+      <div class="ui__deathline__player1" id="player1">
+        <img src="img/player_1.svg" alt="Player 1 icon">
+      </div>
+
+      <div id="progressBar"></div>
+
+      <div class="ui__deathline__player2" id="player2">
+        <img src="img/player_2.svg" alt="Player 2 icon">
+      </div>
+    </div>
+
+    <div class="ui__actionBar">
+      <div class="ui__actionBar__button" id="rock">
+        <img src="img/rock_icon.svg" alt="Rock icon">
+      </div>
+
+      <div class="ui__actionBar__button" id="paper">
+        <img src="img/paper_icon.svg" alt="Paper icon">
+      </div>
+
+      <div class="ui__actionBar__button" id="scissors">
+        <img src="img/scissors_icon.svg" alt="Scissors icon">
+      </div>
+
+      <div class="ui__actionBar__button" id="random">
+        <img src="img/random_icon.svg" alt="Random icon">
+      </div>
+    </div>
+  </section>
+
+  <section class="assets">
+    <div class="assets__hands">
+      <div class="assets__hands__topHand" id="tophand">
+        <img src="img/paper.svg" alt="Top hand">
+      </div>
+
+      <div class="assets__fill" id="fill">
+        <img src="img/fill.svg" alt="Fill">
+      </div>
+      
+      <div class="assets__hands__bottomHand" id="bottomhand">
+        <img src="img/paper.svg" alt="Bottom hand">
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>

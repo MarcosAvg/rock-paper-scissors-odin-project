@@ -1,0 +1,30 @@
+:root {
+  /* Colors */
+  /* Primary colors */
+  --primaryColor: #4847C4;
+  --actionButton: #232586;
+  --timelineColor: #90C67B;
+
+  /* Highlights */
+  --highlights: #FFB24C;
+  --actionButtonActive: #D94690;
+
+  /* Fonts */
+  --principalFont: "Inter", sans-serif;
+
+}
+
+/* Globals */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;     /* 1rem = 10px */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: var(--primaryColor);
+  font-family: var(--principalFont);
+}
